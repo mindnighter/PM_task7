@@ -1,0 +1,44 @@
+*{
+    font-size: 19px;
+}
+
+button {
+    margin: 50px;
+    padding: 7px;
+    background-color: #dfdddd;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    position: relative;
+}
+.active {
+    background-color: #f77187;
+}
+
+.move {
+    background-color: #7e71f7;
+}
+
+.menuHtml, .menuButton {
+    position: absolute;
+    top: 120%;
+    left: -10px;
+    background: #8398f1;
+    color: #ffffff;
+    width: 160px;
+    text-align: center;
+    user-select: none;
+  }
+.menuHtml{
+    padding: 10px;
+}
+.menuHtml:hover{
+    background-color: #133beb;
+}
+
+.menuItem{
+    padding: 10px;
+}
+.menuItem:hover{
+    background-color: #133beb;
+}
