@@ -8,6 +8,15 @@ html.addEventListener('contextmenu',(event)=>{
 });
 
 html.addEventListener('click',(event)=>{
+    if(event.target.dataset.delet){
+        deletion(event.target.parentNode);
+    }
+    if(event.target.dataset.edit){
+        edition(event.target.parentNode);
+    }
+    if(event.target.dataset.add){
+        addFile();
+    }
     cleanMenu();
 });
 
@@ -35,7 +44,7 @@ const buttonHandler = (event) =>{
 const createDelition = () =>{
     const del = document.createElement('div');
     del.innerText = "Удалить";
-    del.addEventListener('click', deletion);
+    del.setAttribute('data-delet','true')
     del.classList.add('menuItem');
     return del;
 }
@@ -43,13 +52,13 @@ const createDelition = () =>{
 const createEdition = () =>{
     const edit = document.createElement('div');
     edit.innerText = "Редактировать";
-    edit.addEventListener('click', edition);
+    edit.setAttribute('data-edit','true')
     edit.classList.add('menuItem');
     return edit;
 }
 
 const deletion = (event) =>{
-    event.target.parentNode.parentNode.remove();
+    event.parentNode.remove();
 }
 
 const edition = (event) =>{
@@ -58,7 +67,7 @@ const edition = (event) =>{
         if(!str){
             return
         }
-        event.target.parentNode.parentNode.innerText = str;
+        event.parentNode.innerText = str;
     } else {
         alert('Такое имя уже существует!');
     }
@@ -75,10 +84,10 @@ const htmlHandler = (event) =>{
     menu.style.left = event.pageX + 'px';
     menu.style.top = event.pageY + 'px';
     event.target.append( menu);
-    menu.addEventListener('click', addFile);
+    menu.setAttribute('data-add','true')
 }
 
-const addFile = (event) =>{
+const addFile = () =>{
     const newItem = document.createElement('button');
     let str = prompt('Введите название');
     if(!str){
